@@ -2,10 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "react-notifications/lib/notifications.css";
-import {
-  NotificationContainer,
-  NotificationManager,
-} from "react-notifications";
+import { NotificationContainer } from "react-notifications";
 
 const Galery = () => {
   const [Image, setImage] = useState([]);
@@ -48,13 +45,13 @@ const Galery = () => {
   };
 
   return (
-    <div id="full-page-div">
+    <div className="galery">
       <h1> Galería </h1>
 
       <div className="img-gallery">{Image}</div>
 
       <div>
-        <button onClick={selectImageToBD}>Cargar Todas Las Imagenes</button>
+        <button onClick={selectImageToBD}>Cargar Imagenes</button>
       </div>
 
       <NotificationContainer />

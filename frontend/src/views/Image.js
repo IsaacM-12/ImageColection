@@ -62,10 +62,10 @@ const Image = () => {
   };
 
   return (
-    <div id="full-page-div">
+    <div className="singleImage">
       <div>{Information}</div>
 
-      <div className="img-gallery">{Image}</div>
+      <div className="ful-img">{Image}</div>
 
       <br></br>
 

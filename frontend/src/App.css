@@ -5,15 +5,18 @@ body {
   text-align: center;
 }
 
-h2{
+h2 {
   margin-right: 1em;
   margin-left: 1em;
 }
 
-.menu {
-  border: 10px solid transparent;
-  background-color: #1e1c1c;
+.principal{
+  background: linear-gradient(to left, #2e2d2e, #0b0b0b);
   color: white;
+}
+
+.menu {
+  background-color: #1e1c1c;
   text-align: left;
   display: flex;
 }
@@ -25,23 +28,20 @@ h2{
 
 .uploadCSS {
   border-top: 100px solid transparent;
-  height: 80%;
-  width: 100%;
-  position: absolute;
-  background: linear-gradient(to left, #ec0303, #278af4); 
-  color: white;
-}
-
-#full-page-div {
-  border-top: 4px solid transparent;
-  border-bottom: 20vh solid transparent;
   height: 100%;
   width: 100%;
-  background: linear-gradient(to left, #2e2d2e, #0b0b0b); 
-  /* background-color: #4f4f4f; */
-  color: white;
+  position: fixed;
+  background: linear-gradient(to left, #ec0303, #278af4);
 }
 
+.galery {
+  border-top: 2vh solid transparent;
+  border-bottom: 5vh solid transparent;
+}
+.singleImage {
+  border-top: 2vh solid transparent;
+  border-bottom: 5vh solid transparent;
+}
 
 button {
   background-color: transparent;
@@ -74,24 +74,6 @@ input {
   border-radius: 50px;
 }
 
-.img-gallery {
-  width: 95%;
-  margin: 5vh auto 15vh;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(50vh, 1fr));
-  gap: 5px;
-}
-.img-gallery img {
-  max-width: 100%;
-  margin: auto;
-  max-height: 50vh;
-  cursor: pointer;
-  transition: 1s;
-}
-.img-gallery img:hover {
-  transform: scale(1.1);
-}
-
 .ful-img {
   margin: auto;
 }
@@ -101,18 +83,6 @@ input {
 .ful-img img:hover {
   transform: none;
   cursor: auto;
-}
-
-@media screen and (max-width: 400px) {
-  h1 {
-    text-decoration: underline;
-  }
-  h1::before {
-    display: none;
-  }
-  h1 span {
-    padding: 0;
-  }
 }
 
 .buttonDelete {
@@ -131,4 +101,26 @@ input {
 .buttonDelete:hover {
   transition: 1s ease-in-out;
   background: red;
+}
+
+.img-gallery {
+  margin-bottom: 55px;
+  margin-top: 55px;
+  
+}
+.img-gallery img {
+  max-width: 90vh;
+  max-height: 40vh;
+  border: 5px solid transparent;
+  cursor: pointer;
+  transition: 1s;
+}
+.img-gallery img:hover {
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 400px) {
+  h2 {
+    text-decoration: underline;
+  }
 }
