@@ -10,7 +10,7 @@ h2 {
   margin-left: 1em;
 }
 
-.principal{
+.principal {
   background: linear-gradient(to left, #2e2d2e, #0b0b0b);
   color: white;
 }
@@ -106,7 +106,6 @@ input {
 .img-gallery {
   margin-bottom: 55px;
   margin-top: 55px;
-  
 }
 .img-gallery img {
   max-width: 90vh;

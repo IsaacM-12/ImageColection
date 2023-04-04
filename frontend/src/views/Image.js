@@ -56,7 +56,7 @@ const Image = () => {
     axios
       .delete(serviceUrl)
       .then(() => {
-        NotificationManager.success("Success", "Creado con exito");
+        NotificationManager.success("Success", "Borrado con exito");
       })
       .then(redirectGalery());
   };
