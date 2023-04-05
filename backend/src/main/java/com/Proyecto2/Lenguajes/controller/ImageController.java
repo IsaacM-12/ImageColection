@@ -2,6 +2,7 @@ package com.Proyecto2.Lenguajes.controller;
 
 import com.Proyecto2.Lenguajes.models.Image;
 import com.Proyecto2.Lenguajes.repository.ImageRepository;
+import com.Proyecto2.Lenguajes.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,9 @@ public class ImageController {
 
     @Autowired
     private ImageRepository imageRepository;
+
+    @Autowired
+    private ImageService imageService;
 
     // seleccionar todos
     @CrossOrigin(origins = "http://localhost:3000")
@@ -29,7 +33,7 @@ public class ImageController {
         Optional<Image> image = imageRepository.findById(id);
 
         if(image.isEmpty()){
-            throw new RuntimeException("Image not found: " + id);
+            throw new RuntimeException("not found: " + id);
         }
         return image.get();
     }
@@ -55,9 +59,16 @@ public class ImageController {
     public void deletePersonaje(@PathVariable String id){
         Optional<Image> image = imageRepository.findById(id);
         if(image.isEmpty()){
-            throw  new RuntimeException("Character not found: " + id);
+            throw  new RuntimeException("not found: " + id);
         }
         imageRepository.deleteById(id);
+    }
+
+    // seleccionar todas las imagenes por key
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping(path = "/find/{key}")
+    public List<Image> getImagesByKeysWord(@PathVariable String key) {
+        return imageService.searchByKeyWords(key);
     }
 
 }
