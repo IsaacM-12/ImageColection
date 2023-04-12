@@ -33,6 +33,7 @@ const Image = () => {
       },
     };
     let response = await axios.get(serviceUrl, config);
+
     let image = (
       <div className="ful-img">
         <img src={response.data.url} />
