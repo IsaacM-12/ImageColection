@@ -1,6 +1,30 @@
-
 -- Solo para h2
 --
 -- insert into Image(id,description,url) values(1,'description','url');
 -- insert into Image(id,description,url) values(2,'description2','url2');
 
+-- ----------------------------------------------------------
+-- MYSQL
+-- ----------------------------------------------------------
+-- drop database galery;
+-- create database galery;
+-- use galery;
+--
+-- create table image(
+--                       id varchar(300) primary key,
+--                       description varchar(500) not null,
+--                       url varchar(500) not null
+-- );
+--
+--
+--
+-- delimiter //
+-- CREATE PROCEDURE searchByKeyWords(IN keyWord VARCHAR(255))
+-- BEGIN
+-- SELECT * FROM image WHERE description LIKE CONCAT('%', keyWord, '%');
+-- END//
+--
+--
+-- select * from image;
+--
+-- insert into image(id, description, url) values(1, 'DesCription', 'url');

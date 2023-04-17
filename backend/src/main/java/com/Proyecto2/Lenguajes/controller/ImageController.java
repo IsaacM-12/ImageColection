@@ -68,7 +68,7 @@ public class ImageController {
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(path = "/find/{key}")
     public List<Image> getImagesByKeysWord(@PathVariable String key) {
-        return imageService.searchByKeyWords(key);
+        return imageService.searchImagesByKeyWords(key);
     }
 
 }

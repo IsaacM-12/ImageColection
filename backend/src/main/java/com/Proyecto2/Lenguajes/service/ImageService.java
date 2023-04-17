@@ -19,7 +19,7 @@ public class ImageService {
 
     //"{ call searchByKeyWords(String keyWords) }";
     // Busaca por KeyWords las imagenes y las devuelve usando un procedure
-    public List<Image> searchByKeyWords(String keyWords) {
+    public List<Image> searchImagesByKeyWords(String keyWords) {
         List<Image> imageList = new ArrayList<>();
 
         StoredProcedureQuery query = entityManager
