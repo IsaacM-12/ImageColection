@@ -13,6 +13,7 @@ h2 {
 .principal {
   background: linear-gradient(to left, #2e2d2d, #0b0b0b);
   color: white;
+  min-height: 100vh;
 }
 
 .menu {
