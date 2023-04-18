@@ -6,6 +6,8 @@ import com.Proyecto2.Lenguajes.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,11 +43,15 @@ public class ImageController {
     // crear
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping(path = "/image")
-    public void createPersonaje(@RequestBody Image newImage){
+    public void createImage(@RequestBody Image newImage){
         String id = newImage.getId();
         Optional<Image> image = imageRepository.findById(id);
 
         if(image.isEmpty()){
+            Date date = new Date();
+            Timestamp timestamp = new Timestamp(date.getTime());
+            newImage.setUpload_date(timestamp);
+
             imageRepository.save(newImage);
         }
         else {
@@ -56,7 +62,7 @@ public class ImageController {
     // borra por Id
     @CrossOrigin(origins = "http://localhost:3000")
     @DeleteMapping(path = "/image/{id}")
-    public void deletePersonaje(@PathVariable String id){
+    public void deleteImage(@PathVariable String id){
         Optional<Image> image = imageRepository.findById(id);
         if(image.isEmpty()){
             throw  new RuntimeException("not found: " + id);

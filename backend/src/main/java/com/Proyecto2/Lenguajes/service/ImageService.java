@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.ParameterMode;
 import javax.persistence.PersistenceContext;
 import javax.persistence.StoredProcedureQuery;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +37,13 @@ public class ImageService {
             String id = registro[0].toString();
             String description = registro[1].toString();
             String url = registro[2].toString();
-            imageList.add(new Image(id, description, url));
+            Timestamp uploaddate = Timestamp.valueOf(registro[3].toString());
+            String keywords = registro[4].toString();
+            String author_id = registro[5].toString();
+            String owner_id = registro[6].toString();
+            String license = registro[7].toString();
+
+            imageList.add(new Image(id, description, url, uploaddate, keywords, author_id, owner_id, license));
         }
 
         return imageList;
