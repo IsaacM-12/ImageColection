@@ -52,7 +52,7 @@ const Image = () => {
   // -------------------------------------------------------------
   // Borra la image y lo redirigue a la galery
   // -------------------------------------------------------------
-  const deletePersonaje = async () => {
+  const deleteImage = async () => {
     const serviceUrl = `http://localhost:8080/image/` + id;
     axios
       .delete(serviceUrl)
@@ -70,7 +70,7 @@ const Image = () => {
 
       <br></br>
 
-      <button className="buttonDelete" onClick={deletePersonaje}>
+      <button className="buttonDelete" onClick={deleteImage}>
         Borrar Imagen
       </button>
     </div>

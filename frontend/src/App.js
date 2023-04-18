@@ -1,5 +1,7 @@
 import Image from "./views/Image";
 import Galery from "./views/Galery";
+import Person from "./views/Person";
+import CreatePerson from "./views/CreatePerson";
 import UploaImage from "./views/UploadImage";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -23,6 +25,9 @@ function App() {
           <Route index element={<Galery />} />
           <Route path="image/:id" element={<Image />} />
           <Route path="upload" element={<UploaImage />} />
+          <Route path="person" element={<Person />} />
+          <Route path="person/create" element={<CreatePerson />} />
+
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

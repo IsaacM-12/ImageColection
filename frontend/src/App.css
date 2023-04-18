@@ -10,6 +10,17 @@ h2 {
   margin-left: 1em;
 }
 
+select{
+  background-color: transparent;
+  color: white;
+  border-color: red;
+  margin: 5px;
+  padding: 5px;
+}
+select:focus {
+  color: #0b0b0b;
+}
+
 .principal {
   background: linear-gradient(to left, #2e2d2d, #0b0b0b);
   color: white;
@@ -74,6 +85,7 @@ input {
   padding: 10px 10px;
   border-radius: 50px;
 }
+
 
 .ful-img {
   margin: auto;
