@@ -10,11 +10,19 @@ const Navbar = () => {
       <Link to="/upload">
         <h2>Subir Imagen</h2>
       </Link>
+
       <Link to="/person">
         <h2>Personas</h2>
       </Link>
       <Link to="/person/create">
         <h2>Crear Persona</h2>
+      </Link>
+
+      <Link to="/institution">
+        <h2>Instituciones</h2>
+      </Link>
+      <Link to="/institution/create">
+        <h2>Crear Institución</h2>
       </Link>
     </div>
   );
