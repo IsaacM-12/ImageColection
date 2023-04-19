@@ -13,7 +13,7 @@ const UploaImage = () => {
   const [file, setFile] = useState(null);
 
   const [description, setDescription] = useState("");
-  const [author, setAuthor] = useState("");
+  const [author, setAuthor] = useState("malo");
   const [owner, setOwner] = useState("");
   const [licencia, setLicencia] = useState("");
 
@@ -21,6 +21,10 @@ const UploaImage = () => {
   const navigate = useNavigate();
   function redirectGalery() {
     navigate("/");
+  }
+
+  function refresque() {
+    navigate("/image/upload");
   }
 
   // -------------------------------------------------------------
@@ -66,9 +70,7 @@ const UploaImage = () => {
         .then(redirectGalery())
 
         .catch((error) => {
-          NotificationManager.error("Error", "Error", 5000, () => {
-            alert("callback");
-          });
+          NotificationManager.error("Error", "Error");
         });
     }
   }
@@ -85,11 +87,10 @@ const UploaImage = () => {
       },
     };
     let response = await axios.get(serviceUrl, config).catch((error) => {
-      setDescription("");
-      NotificationManager.error("Error", "EL autor no existe", 5000, () => {
-        alert("callback");
-      });
+      NotificationManager.error("Error", "EL autor no existe", 5000);
     });
+
+    return response.data.name; 
   };
 
   // -------------------------------------------------------------
@@ -100,14 +101,13 @@ const UploaImage = () => {
   const CreateImage = async (e) => {
     e.preventDefault();
     try {
-      autorByID();
+      const buscarAutor = await autorByID();
+
       const result = await uploadFile(file);
       const uniqueID = uuidv4();
       createImageBD(uniqueID, result);
     } catch (error) {
-      NotificationManager.error("Error", "Error", 5000, () => {
-        alert("callback");
-      });
+      NotificationManager.error("Error", "Asegúrese que todos los campos sean validos", 5000);
     }
   };
 

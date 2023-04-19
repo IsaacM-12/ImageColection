@@ -42,9 +42,9 @@ const Image = () => {
     setImage(image);
     setInformation(
       <div>
-        {" "}
-        <h2>Descripcion: {response.data.description}</h2>
-        <h2>URL: {response.data.url}</h2>
+        <a>Descripcion: {response.data.description}</a>
+        <br></br><br></br>
+        <a>Licencia: {response.data.license}</a>
       </div>
     );
   };
@@ -64,9 +64,10 @@ const Image = () => {
 
   return (
     <div className="singleImage">
-      <div>{Information}</div>
 
       <div className="ful-img">{Image}</div>
+
+      <div className="information">{Information}</div>
 
       <br></br>
 

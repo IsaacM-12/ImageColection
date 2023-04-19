@@ -31,9 +31,15 @@ const Institution = () => {
       let institutionlist = response.data.map((item) => {
         return (
           <>
-            <h3>
-              id: {item.id} | name: {item.name}{" "}
-            </h3>
+            <table>
+              <tr>
+                <td>{item.id}</td>
+                <td>{item.name}</td>
+                <td>{item.website}</td>
+                <td>{item.country}</td>
+                <td>{item.phone}</td>
+              </tr>
+            </table>
           </>
         );
       });
@@ -67,7 +73,7 @@ const Institution = () => {
     <div className="institution">
       <h1> Instituciones </h1>
 
-      <div>{Institution}</div>
+      <div className="information">{Institution}</div>
 
       <div>
         <button onClick={selectInstitutionToBD}>Cargar Instituciones</button>

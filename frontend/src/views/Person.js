@@ -31,9 +31,15 @@ const Person = () => {
       let personlist = response.data.map((item) => {
         return (
           <>
-            <h3>
-              id: {item.id} | name: {item.name}{" "}
-            </h3>
+            <table>
+              <tr>
+                <td>{item.id}</td>
+                <td>{item.name}</td>
+                <td>{item.last_name}</td>
+                <td>{item.country}</td>
+                <td>{item.phone}</td>
+              </tr>
+            </table>
           </>
         );
       });
@@ -67,7 +73,7 @@ const Person = () => {
     <div className="person">
       <h1> Personas </h1>
 
-      <div>{Person}</div>
+      <div className="information">{Person}</div>
 
       <div>
         <button onClick={selectPersonToBD}>Cargar personas</button>

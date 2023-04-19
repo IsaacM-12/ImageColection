@@ -10,6 +10,18 @@ h2 {
   margin-left: 1em;
 }
 
+table {
+  margin: auto;
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+}
+
+td {
+  border: 1px solid white;
+  text-align: center;
+}
+
 select{
   background-color: transparent;
   color: white;
@@ -91,7 +103,7 @@ input {
   margin: auto;
 }
 .ful-img img {
-  max-height: 70vh;
+  max-height: 50vh;
 }
 .ful-img img:hover {
   transform: none;
@@ -129,6 +141,11 @@ input {
 }
 .img-gallery img:hover {
   transform: scale(1.1);
+}
+
+
+.information {
+  margin: 30px;
 }
 
 @media screen and (max-width: 400px) {

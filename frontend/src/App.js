@@ -27,7 +27,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Galery />} />
           <Route path="image/:id" element={<Image />} />
-          <Route path="upload" element={<UploaImage />} />
+          <Route path="image/upload" element={<UploaImage />} />
 
           <Route path="person" element={<Person />} />
           <Route path="person/create" element={<CreatePerson />} />
