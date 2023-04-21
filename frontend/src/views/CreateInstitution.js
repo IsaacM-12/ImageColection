@@ -76,7 +76,7 @@ const CreateInstitution = () => {
   };
 
   return (
-    <div className="institution">
+    <div className="uploadCSS">
       <div>
         <h1> Crear una Institución</h1>
         <form onSubmit={CreateInstitutions}>

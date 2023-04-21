@@ -36,6 +36,7 @@ const Institution = () => {
                 <td>{item.id}</td>
                 <td>{item.name}</td>
                 <td>{item.website}</td>
+                <td>{item.email}</td>
                 <td>{item.country}</td>
                 <td>{item.phone}</td>
               </tr>
@@ -73,9 +74,21 @@ const Institution = () => {
     <div className="institution">
       <h1> Instituciones </h1>
 
-      <div className="information">{Institution}</div>
+      <div className="information">
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Website</th>
+            <th>Email</th>
+            <th>Pais</th>
+            <th>Telefono</th>
+          </tr>
+        </table>
+        {Institution}
+      </div>
 
-      <div>
+      <div className="space">
         <button onClick={selectInstitutionToBD}>Cargar Instituciones</button>
       </div>
 

@@ -36,6 +36,7 @@ const Person = () => {
                 <td>{item.id}</td>
                 <td>{item.name}</td>
                 <td>{item.last_name}</td>
+                <td>{item.email}</td>
                 <td>{item.country}</td>
                 <td>{item.phone}</td>
               </tr>
@@ -63,9 +64,7 @@ const Person = () => {
         NotificationManager.success("Success", "Borrado con exito", 5000);
       })
       .catch((error) => {
-        NotificationManager.error("Error", "No encontrado", 5000, () => {
-          alert("callback");
-        });
+        NotificationManager.error("Error", "No se puedo borrar", 5000);
       });
   };
 
@@ -73,9 +72,21 @@ const Person = () => {
     <div className="person">
       <h1> Personas </h1>
 
-      <div className="information">{Person}</div>
+      <div className="information">
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Apellidos</th>
+            <th>Email</th>
+            <th>Pais</th>
+            <th>Telefono</th>
+          </tr>
+        </table>
+        {Person}
+      </div>
 
-      <div>
+      <div className="space">
         <button onClick={selectPersonToBD}>Cargar personas</button>
       </div>
 

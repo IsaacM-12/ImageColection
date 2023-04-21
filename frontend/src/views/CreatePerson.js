@@ -76,7 +76,7 @@ const CreatePerson = () => {
   };
 
   return (
-    <div className="person">
+    <div className="uploadCSS">
       <div>
         <h1> Crear una persona </h1>
         <form onSubmit={CreatePersons}>

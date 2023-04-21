@@ -14,11 +14,15 @@ table {
   margin: auto;
   border-collapse: collapse;
   table-layout: fixed;
-  width: 100%;
+  width: 90%;
 }
 
 td {
-  border: 1px solid white;
+  border: 1px solid red;
+  text-align: center;
+}
+th {
+  border: 1px solid red;
   text-align: center;
 }
 
@@ -98,6 +102,9 @@ input {
   border-radius: 50px;
 }
 
+.space{
+  margin: 20px;
+}
 
 .ful-img {
   margin: auto;
@@ -144,12 +151,8 @@ input {
 }
 
 
-.information {
-  margin: 30px;
-}
-
-@media screen and (max-width: 400px) {
-  h2 {
-    text-decoration: underline;
+@media screen and (max-width: 700px) {
+  .principal {
+    max-width: 100vh;
   }
 }
