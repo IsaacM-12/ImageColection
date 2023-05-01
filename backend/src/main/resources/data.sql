@@ -10,25 +10,14 @@
 -- ----------------------------------------------------------
 -- MYSQL LO QUE DEBE CORRER EN LA BASE MYSQL
 -- ----------------------------------------------------------
-
+--
+-- drop database galery;
 -- create database galery;
 -- use galery;
 --
 -- --------------------------------- --------
 -- -- -- TABLES
 -- -- ---------------------------------------
---
--- CREATE TABLE image (
---                        id VARCHAR(100) PRIMARY KEY,
---                        description VARCHAR(500) NOT NULL,
---                        url VARCHAR(500) NOT NULL,
---                        upload_date TIMESTAMP not null DEFAULT NOW(),
---                        keywords VARCHAR(500),
---                        author_id VARCHAR(100) NOT NULL,
---                        owner_id VARCHAR(100),
---                        license ENUM('CC BY', 'CC BY-SA', 'CC BY-ND', 'CC BY-NC', 'CC BY-NC-SA', 'CC BY-NC-ND') not null
--- );
---
 -- CREATE TABLE Person (
 --                         id VARCHAR(100) PRIMARY KEY,
 --                         name VARCHAR(100) NOT NULL,
@@ -47,12 +36,92 @@
 --                              website VARCHAR(100) NOT NULL
 -- );
 --
+-- CREATE TABLE Reino (
+--                        id VARCHAR(100) PRIMARY KEY,
+--                        taxon_ancestor_id VARCHAR(100) NOT NULL,
+--                        scientific_name VARCHAR(100) NOT NULL,
+--                        author VARCHAR(50) NOT NULL,
+--                        publication_year VARCHAR(100) NOT NULL
+-- );
+--
+--
+-- -- drop table image;
+-- CREATE TABLE image (
+--                        id VARCHAR(100) PRIMARY KEY,
+--                        description VARCHAR(500) NOT NULL,
+--                        url VARCHAR(500) NOT NULL,
+--                        upload_date TIMESTAMP not null DEFAULT NOW(),
+--                        keywords VARCHAR(500),
+--                        author_id VARCHAR(100) NOT NULL,
+--                        owner_id VARCHAR(100) NOT NULL,
+--                        license ENUM('CC BY', 'CC BY-SA', 'CC BY-ND', 'CC BY-NC', 'CC BY-NC-SA', 'CC BY-NC-ND') NOT NULL,
+--                        taxon_id VARCHAR(100) NOT NULL,
+--                        FOREIGN KEY (author_id) REFERENCES Person(id),
+--                        FOREIGN KEY (owner_id) REFERENCES Institution(id)
+-- );
+--
 -- --------------------------------- --------
 -- -- -- PROCEDURES
 -- -- ---------------------------------------
---
 -- delimiter //
--- CREATE PROCEDURE searchByKeyWords(IN keyWord VARCHAR(255))
+-- CREATE PROCEDURE searchByKeyWords(IN buscar VARCHAR(225))
 -- BEGIN
--- SELECT * FROM image WHERE description LIKE CONCAT('%', keyWord, '%');
--- END//
+-- SELECT *
+-- FROM image
+-- WHERE
+--         author_id = (
+--         SELECT id
+--         FROM Person
+--         WHERE name LIKE CONCAT('%', buscar, '%')
+--     )
+--    OR
+--         owner_id =(
+--         SELECT id
+--         FROM Institution
+--         WHERE name LIKE CONCAT('%', buscar, '%')
+--     )
+--    OR
+--         taxon_id =(
+--         SELECT id
+--         FROM Reino
+--         WHERE scientific_name LIKE CONCAT('%', buscar, '%')
+--     )
+--    OR
+--         taxon_id =(
+--         SELECT id
+--         FROM Orden
+--         WHERE scientific_name LIKE CONCAT('%', buscar, '%')
+--     )
+--    OR
+--         taxon_id =(
+--         SELECT id
+--         FROM Genero
+--         WHERE scientific_name LIKE CONCAT('%', buscar, '%')
+--     )
+--    OR
+--         taxon_id =(
+--         SELECT id
+--         FROM Familia
+--         WHERE scientific_name LIKE CONCAT('%', buscar, '%')
+--     )
+--    OR
+--         taxon_id =(
+--         SELECT id
+--         FROM Especie
+--         WHERE scientific_name LIKE CONCAT('%', buscar, '%')
+--     )
+--    OR
+--         taxon_id =(
+--         SELECT id
+--         FROM Division
+--         WHERE scientific_name LIKE CONCAT('%', buscar, '%')
+--     )
+--    OR
+--         taxon_id =(
+--         SELECT id
+--         FROM Clase
+--         WHERE scientific_name LIKE CONCAT('%', buscar, '%')
+--     )
+--    OR
+--         keywords LIKE CONCAT('%', buscar, '%');
+-- END //

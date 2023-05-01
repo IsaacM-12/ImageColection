@@ -42,8 +42,9 @@ public class ImageService {
             String author_id = registro[5].toString();
             String owner_id = registro[6].toString();
             String license = registro[7].toString();
+            String taxon = registro[8].toString();
 
-            imageList.add(new Image(id, description, url, uploaddate, keywords, author_id, owner_id, license));
+            imageList.add(new Image(id, description, url, uploaddate, keywords, author_id, owner_id, license, taxon));
         }
 
         return imageList;

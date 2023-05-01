@@ -17,6 +17,7 @@ public class Image {
     private String author_id;
     private String owner_id;
     private String license;
+    private String taxon_id;
 
 
 
@@ -24,15 +25,24 @@ public class Image {
     public Image() {
     }
 
-    public Image(String id, String description, String url, Timestamp uploadDate, String keywords, String author_id, String owner_id, String license) {
+    public Image(String id, String description, String url, Timestamp upload_date, String keywords, String author_id, String owner_id, String license, String taxon_id) {
         this.id = id;
         this.description = description;
         this.url = url;
-        this.upload_date = uploadDate;
+        this.upload_date = upload_date;
         this.keywords = keywords;
         this.author_id = author_id;
         this.owner_id = owner_id;
         this.license = license;
+        this.taxon_id = taxon_id;
+    }
+
+    public String getTaxon_id() {
+        return taxon_id;
+    }
+
+    public void setTaxon_id(String taxon_id) {
+        this.taxon_id = taxon_id;
     }
 
     public String getId() {
