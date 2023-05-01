@@ -5,24 +5,31 @@ const Navbar = () => {
   return (
     <div className="menu">
       <Link to="/">
-        <h2>Galería</h2>
+        <h3>Galería</h3>
       </Link>
       <Link to="/image/upload">
-        <h2>Subir Imagen</h2>
+        <h3>Subir Imagen</h3>
       </Link>
 
       <Link to="/person">
-        <h2>Personas</h2>
+        <h3>Personas</h3>
       </Link>
       <Link to="/person/create">
-        <h2>Crear Persona</h2>
+        <h3>Crear Persona</h3>
       </Link>
 
       <Link to="/institution">
-        <h2>Instituciones</h2>
+        <h3>Instituciones</h3>
       </Link>
       <Link to="/institution/create">
-        <h2>Crear Institución</h2>
+        <h3>Crear Institución</h3>
+      </Link>
+
+      <Link to="/taxon">
+        <h3>Taxones</h3>
+      </Link>
+      <Link to="/taxon/create">
+        <h3>Crear Taxon</h3>
       </Link>
     </div>
   );

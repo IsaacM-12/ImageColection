@@ -16,6 +16,7 @@ const UploaImage = () => {
   const [author, setAuthor] = useState("malo");
   const [owner, setOwner] = useState("");
   const [licencia, setLicencia] = useState("");
+  const [taxon, setTaxon] = useState("");
 
   // para cambiar la direccion del browser a la inicial
   const navigate = useNavigate();
@@ -39,6 +40,7 @@ const UploaImage = () => {
       author_id: author,
       owner_id: owner,
       license: licencia,
+      taxon_id: taxon,
     };
 
     if (
@@ -47,7 +49,8 @@ const UploaImage = () => {
       newImage.url === "" ||
       newImage.author_id === "" ||
       newImage.owner_id === "" ||
-      newImage.license === ""
+      newImage.license === "" ||
+      newImage.taxon_id === ""
     ) {
       NotificationManager.warning(
         "Warning message",
@@ -78,7 +81,6 @@ const UploaImage = () => {
   // -------------------------------------------------------------
   // Revisa que el ID del autor ingresado exista comprobando en la BD
   // -------------------------------------------------------------
-
   const autorByID = async () => {
     const serviceUrl = "http://localhost:8080/person/" + author;
     let config = {
@@ -90,7 +92,25 @@ const UploaImage = () => {
       NotificationManager.error("Error", "EL autor no existe", 5000);
     });
 
-    return response.data.name; 
+    return response.data.name;
+  };
+
+
+  // -------------------------------------------------------------
+  // Revisa que el ID del owner ingresado exista comprobando en la BD
+  // -------------------------------------------------------------
+  const ownerByID = async () => {
+    const serviceUrl = "http://localhost:8080/institution/" + owner;
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    let response = await axios.get(serviceUrl, config).catch((error) => {
+      NotificationManager.error("Error", "EL owner no existe", 5000);
+    });
+
+    return response.data.name;
   };
 
   // -------------------------------------------------------------
@@ -102,12 +122,17 @@ const UploaImage = () => {
     e.preventDefault();
     try {
       const buscarAutor = await autorByID();
+      const buscarOwner = await ownerByID();
 
       const result = await uploadFile(file);
       const uniqueID = uuidv4();
       createImageBD(uniqueID, result);
     } catch (error) {
-      NotificationManager.error("Error", "Asegúrese que todos los campos sean validos", 5000);
+      NotificationManager.error(
+        "Error",
+        "Asegúrese que todos los campos sean validos",
+        5000
+      );
     }
   };
 
@@ -148,6 +173,12 @@ const UploaImage = () => {
           </label>
           <br></br>
           <br></br>
+          <label>
+            Taxon ID:
+            <input type="text" onChange={(e) => setTaxon(e.target.value)} />
+          </label>
+          <br></br>
+          <br></br>
           Licencia:
           <label>
             <select onChange={(e) => setLicencia(e.target.value)}>
@@ -161,7 +192,7 @@ const UploaImage = () => {
           </label>
           <br></br>
           <br></br>
-          <button>Subir Imagenes</button>
+          <button>Subir Imagen</button>
         </form>
       </div>
       <NotificationContainer />

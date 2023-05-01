@@ -10,6 +10,8 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Layout from "./components/Layout";
+import Taxon from "./views/Taxon";
+import CreateTaxon from "./views/CreateTaxon";
 
 function App() {
   function NotFound() {
@@ -34,6 +36,9 @@ function App() {
           
           <Route path="institution" element={<Institution />} />
           <Route path="institution/create" element={<CreateInstitution />} />
+
+          <Route path="taxon" element={<Taxon />} />
+          <Route path="taxon/create" element={<CreateTaxon />} />
 
           <Route path="*" element={<NotFound />} />
         </Route>
