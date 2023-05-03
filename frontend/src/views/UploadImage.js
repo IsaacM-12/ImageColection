@@ -95,7 +95,6 @@ const UploaImage = () => {
     return response.data.name;
   };
 
-
   // -------------------------------------------------------------
   // Revisa que el ID del owner ingresado exista comprobando en la BD
   // -------------------------------------------------------------
@@ -174,7 +173,7 @@ const UploaImage = () => {
           <br></br>
           <br></br>
           <label>
-            Taxon ID:
+            Taxones:
             <input type="text" onChange={(e) => setTaxon(e.target.value)} />
           </label>
           <br></br>
@@ -182,6 +181,7 @@ const UploaImage = () => {
           Licencia:
           <label>
             <select onChange={(e) => setLicencia(e.target.value)}>
+              <option value="none">None</option>
               <option value="CC BY">CC BY</option>
               <option value="CC BY-SA">CC BY-SA</option>
               <option value="CC BY-ND">CC BY-ND</option>

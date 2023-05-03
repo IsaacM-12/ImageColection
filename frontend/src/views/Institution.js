@@ -64,9 +64,7 @@ const Institution = () => {
         NotificationManager.success("Success", "Borrado con exito", 5000);
       })
       .catch((error) => {
-        NotificationManager.error("Error", "No encontrado", 5000, () => {
-          alert("callback");
-        });
+        NotificationManager.error("Error", "No se puedo borrar esta siendo utilizado o no existe", 5000);
       });
   };
 

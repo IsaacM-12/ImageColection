@@ -53,7 +53,7 @@ const CreateTaxon = () => {
         })
 
         .catch((error) => {
-          NotificationManager.error("Error", "Error");
+          NotificationManager.error("Error", "Revisa que todos los campos sean validos");
         });
     }
   }
@@ -82,6 +82,12 @@ const CreateTaxon = () => {
             <select onChange={(e) => setTaxonCrear(e.target.value)}>
               <option value="none">None</option>
               <option value="reino">Reino</option>
+              <option value="division">Division</option>
+              <option value="clase">Clase</option>
+              <option value="orden">Orden</option>
+              <option value="familia">Familia</option>
+              <option value="genero">Genero</option>
+              <option value="especie">Especie</option>
             </select>
           </label>
           <br></br>
@@ -113,7 +119,7 @@ const CreateTaxon = () => {
           Año de publicacion:
           <label>
             <input
-              type="text"
+              type="date"
               onChange={(e) => setPublication_year(e.target.value)}
             />
           </label>

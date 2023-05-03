@@ -151,6 +151,11 @@ input {
 }
 
 
+.taxon {
+  border: 3vh solid transparent;
+}
+
+
 @media screen and (max-width: 700px) {
   .principal {
     max-width: 100vh;
