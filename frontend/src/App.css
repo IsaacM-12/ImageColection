@@ -54,14 +54,6 @@ select:focus {
   margin-left: 1em;
 }
 
-.uploadCSS {
-  border-top: 100px solid transparent;
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  background: linear-gradient(to left, #ec0303, #278af4);
-}
-
 .galery {
   border-top: 2vh solid transparent;
   border-bottom: 5vh solid transparent;
@@ -150,7 +142,6 @@ input {
   transform: scale(1.1);
 }
 
-
 .taxon {
   border: 3vh solid transparent;
 }
@@ -160,4 +151,21 @@ input {
   .principal {
     max-width: 100vh;
   }
+}
+
+
+.uploadCSS {
+  border-top: 100px solid transparent;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background: linear-gradient(to left, #ec0303, #278af4);
+}
+
+.uploadTaxon {
+  border-top: 100px solid transparent;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background: linear-gradient(to left, #ea52f8, #0066ff);
 }

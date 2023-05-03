@@ -72,7 +72,7 @@ const CreateTaxon = () => {
   };
 
   return (
-    <div className="uploadCSS">
+    <div className="uploadTaxon">
       <div>
         <h1> Crear un Taxon </h1>
         <form onSubmit={CreateTaxons}>
