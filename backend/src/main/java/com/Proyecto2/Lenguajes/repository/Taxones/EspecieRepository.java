@@ -1,7 +1,7 @@
 package com.Proyecto2.Lenguajes.repository.Taxones;
 
-import com.Proyecto2.Lenguajes.models.Taxones.Clase;
+import com.Proyecto2.Lenguajes.models.Taxones.Especie;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ClaseRepository extends JpaRepository<Clase, String> {
+public interface EspecieRepository extends JpaRepository<Especie, String> {
 }

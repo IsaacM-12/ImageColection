@@ -1,7 +1,7 @@
 package com.Proyecto2.Lenguajes.controller.Taxones;
 
-import com.Proyecto2.Lenguajes.models.Taxones.Clase;
-import com.Proyecto2.Lenguajes.repository.Taxones.ClaseRepository;
+import com.Proyecto2.Lenguajes.models.Taxones.Familia;
+import com.Proyecto2.Lenguajes.repository.Taxones.FamiliaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,39 +10,39 @@ import java.util.Optional;
 
 @RestController
 
-public class ClaseController {
+public class FamiliaController {
 
     @Autowired
-    private ClaseRepository claseRepository;
+    private FamiliaRepository familiaRepository;
 
     // seleccionar todos
     @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping(path = "/clase")
-    public List<Clase> getClases() {
-        return claseRepository.findAll();
+    @GetMapping(path = "/familia")
+    public List<Familia> getFamilia() {
+        return familiaRepository.findAll();
     }
 
     // seleccionar por id
     @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping(path = "/clase/{id}")
-    public Clase getById(@PathVariable String id) {
-        Optional<Clase> clase = claseRepository.findById(id);
+    @GetMapping(path = "/familia/{id}")
+    public Familia getById(@PathVariable String id) {
+        Optional<Familia> familia = familiaRepository.findById(id);
 
-        if(clase.isEmpty()){
+        if(familia.isEmpty()){
             throw new RuntimeException("not found: " + id);
         }
-        return clase.get();
+        return familia.get();
     }
 
     // crear
     @CrossOrigin(origins = "http://localhost:3000")
-    @PostMapping(path = "/clase")
-    public void createClase(@RequestBody Clase newclase){
-        String id = newclase.getId();
-        Optional<Clase> clase = claseRepository.findById(id);
+    @PostMapping(path = "/familia")
+    public void createFamilia(@RequestBody Familia newfamilia){
+        String id = newfamilia.getId();
+        Optional<Familia> familia = familiaRepository.findById(id);
 
-        if(clase.isEmpty()){
-            claseRepository.save(newclase);
+        if(familia.isEmpty()){
+            familiaRepository.save(newfamilia);
         }
         else {
             throw new RuntimeException("ID ocupado: " + id);
@@ -51,13 +51,13 @@ public class ClaseController {
 
     // borra por Id
     @CrossOrigin(origins = "http://localhost:3000")
-    @DeleteMapping(path = "/clase/{id}")
-    public void deleteClase(@PathVariable String id){
-        Optional<Clase> clase = claseRepository.findById(id);
-        if(clase.isEmpty()){
+    @DeleteMapping(path = "/familia/{id}")
+    public void deleteFamilia(@PathVariable String id){
+        Optional<Familia> familia = familiaRepository.findById(id);
+        if(familia.isEmpty()){
             throw  new RuntimeException("not found: " + id);
         }
-        claseRepository.deleteById(id);
+        familiaRepository.deleteById(id);
     }
 
 

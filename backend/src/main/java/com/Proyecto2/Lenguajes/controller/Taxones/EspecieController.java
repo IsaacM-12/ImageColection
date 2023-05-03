@@ -1,7 +1,7 @@
 package com.Proyecto2.Lenguajes.controller.Taxones;
 
-import com.Proyecto2.Lenguajes.models.Taxones.Clase;
-import com.Proyecto2.Lenguajes.repository.Taxones.ClaseRepository;
+import com.Proyecto2.Lenguajes.models.Taxones.Especie;
+import com.Proyecto2.Lenguajes.repository.Taxones.EspecieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,39 +10,39 @@ import java.util.Optional;
 
 @RestController
 
-public class ClaseController {
+public class EspecieController {
 
     @Autowired
-    private ClaseRepository claseRepository;
+    private EspecieRepository especieRepository;
 
     // seleccionar todos
     @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping(path = "/clase")
-    public List<Clase> getClases() {
-        return claseRepository.findAll();
+    @GetMapping(path = "/especie")
+    public List<Especie> getEspecie() {
+        return especieRepository.findAll();
     }
 
     // seleccionar por id
     @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping(path = "/clase/{id}")
-    public Clase getById(@PathVariable String id) {
-        Optional<Clase> clase = claseRepository.findById(id);
+    @GetMapping(path = "/especie/{id}")
+    public Especie getById(@PathVariable String id) {
+        Optional<Especie> especie = especieRepository.findById(id);
 
-        if(clase.isEmpty()){
+        if(especie.isEmpty()){
             throw new RuntimeException("not found: " + id);
         }
-        return clase.get();
+        return especie.get();
     }
 
     // crear
     @CrossOrigin(origins = "http://localhost:3000")
-    @PostMapping(path = "/clase")
-    public void createClase(@RequestBody Clase newclase){
-        String id = newclase.getId();
-        Optional<Clase> clase = claseRepository.findById(id);
+    @PostMapping(path = "/especie")
+    public void createEspecie(@RequestBody Especie newEspecie){
+        String id = newEspecie.getId();
+        Optional<Especie> especie = especieRepository.findById(id);
 
-        if(clase.isEmpty()){
-            claseRepository.save(newclase);
+        if(especie.isEmpty()){
+            especieRepository.save(newEspecie);
         }
         else {
             throw new RuntimeException("ID ocupado: " + id);
@@ -51,13 +51,13 @@ public class ClaseController {
 
     // borra por Id
     @CrossOrigin(origins = "http://localhost:3000")
-    @DeleteMapping(path = "/clase/{id}")
-    public void deleteClase(@PathVariable String id){
-        Optional<Clase> clase = claseRepository.findById(id);
-        if(clase.isEmpty()){
+    @DeleteMapping(path = "/especie/{id}")
+    public void deleteEspecie(@PathVariable String id){
+        Optional<Especie> especie = especieRepository.findById(id);
+        if(especie.isEmpty()){
             throw  new RuntimeException("not found: " + id);
         }
-        claseRepository.deleteById(id);
+        especieRepository.deleteById(id);
     }
 
 

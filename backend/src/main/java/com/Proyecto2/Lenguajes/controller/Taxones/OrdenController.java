@@ -1,7 +1,7 @@
 package com.Proyecto2.Lenguajes.controller.Taxones;
 
-import com.Proyecto2.Lenguajes.models.Taxones.Reino;
-import com.Proyecto2.Lenguajes.repository.Taxones.ReinoRepository;
+import com.Proyecto2.Lenguajes.models.Taxones.Orden;
+import com.Proyecto2.Lenguajes.repository.Taxones.OrdenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,39 +10,39 @@ import java.util.Optional;
 
 @RestController
 
-public class ReinoController {
+public class OrdenController {
 
     @Autowired
-    private ReinoRepository reinoRepository;
+    private OrdenRepository ordenRepository;
 
     // seleccionar todos
     @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping(path = "/reino")
-    public List<Reino> getImages() {
-        return reinoRepository.findAll();
+    @GetMapping(path = "/orden")
+    public List<Orden> getOrden() {
+        return ordenRepository.findAll();
     }
 
     // seleccionar por id
     @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping(path = "/reino/{id}")
-    public Reino getById(@PathVariable String id) {
-        Optional<Reino> image = reinoRepository.findById(id);
+    @GetMapping(path = "/orden/{id}")
+    public Orden getById(@PathVariable String id) {
+        Optional<Orden> orden = ordenRepository.findById(id);
 
-        if(image.isEmpty()){
+        if(orden.isEmpty()){
             throw new RuntimeException("not found: " + id);
         }
-        return image.get();
+        return orden.get();
     }
 
     // crear
     @CrossOrigin(origins = "http://localhost:3000")
-    @PostMapping(path = "/reino")
-    public void createImage(@RequestBody Reino newImage){
+    @PostMapping(path = "/orden")
+    public void createOrden(@RequestBody Orden newImage){
         String id = newImage.getId();
-        Optional<Reino> image = reinoRepository.findById(id);
+        Optional<Orden> orden = ordenRepository.findById(id);
 
-        if(image.isEmpty()){
-            reinoRepository.save(newImage);
+        if(orden.isEmpty()){
+            ordenRepository.save(newImage);
         }
         else {
             throw new RuntimeException("ID ocupado: " + id);
@@ -51,13 +51,13 @@ public class ReinoController {
 
     // borra por Id
     @CrossOrigin(origins = "http://localhost:3000")
-    @DeleteMapping(path = "/reino/{id}")
-    public void deleteImage(@PathVariable String id){
-        Optional<Reino> image = reinoRepository.findById(id);
-        if(image.isEmpty()){
+    @DeleteMapping(path = "/orden/{id}")
+    public void deleteOrden(@PathVariable String id){
+        Optional<Orden> orden = ordenRepository.findById(id);
+        if(orden.isEmpty()){
             throw  new RuntimeException("not found: " + id);
         }
-        reinoRepository.deleteById(id);
+        ordenRepository.deleteById(id);
     }
 
 

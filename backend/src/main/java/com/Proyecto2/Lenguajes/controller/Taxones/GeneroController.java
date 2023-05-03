@@ -1,7 +1,7 @@
 package com.Proyecto2.Lenguajes.controller.Taxones;
 
-import com.Proyecto2.Lenguajes.models.Taxones.Clase;
-import com.Proyecto2.Lenguajes.repository.Taxones.ClaseRepository;
+import com.Proyecto2.Lenguajes.models.Taxones.Genero;
+import com.Proyecto2.Lenguajes.repository.Taxones.GeneroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,39 +10,39 @@ import java.util.Optional;
 
 @RestController
 
-public class ClaseController {
+public class GeneroController {
 
     @Autowired
-    private ClaseRepository claseRepository;
+    private GeneroRepository generoRepository;
 
     // seleccionar todos
     @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping(path = "/clase")
-    public List<Clase> getClases() {
-        return claseRepository.findAll();
+    @GetMapping(path = "/genero")
+    public List<Genero> getGenero() {
+        return generoRepository.findAll();
     }
 
     // seleccionar por id
     @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping(path = "/clase/{id}")
-    public Clase getById(@PathVariable String id) {
-        Optional<Clase> clase = claseRepository.findById(id);
+    @GetMapping(path = "/genero/{id}")
+    public Genero getById(@PathVariable String id) {
+        Optional<Genero> genero = generoRepository.findById(id);
 
-        if(clase.isEmpty()){
+        if(genero.isEmpty()){
             throw new RuntimeException("not found: " + id);
         }
-        return clase.get();
+        return genero.get();
     }
 
     // crear
     @CrossOrigin(origins = "http://localhost:3000")
-    @PostMapping(path = "/clase")
-    public void createClase(@RequestBody Clase newclase){
-        String id = newclase.getId();
-        Optional<Clase> clase = claseRepository.findById(id);
+    @PostMapping(path = "/genero")
+    public void createGenero(@RequestBody Genero newgenero){
+        String id = newgenero.getId();
+        Optional<Genero> genero = generoRepository.findById(id);
 
-        if(clase.isEmpty()){
-            claseRepository.save(newclase);
+        if(genero.isEmpty()){
+            generoRepository.save(newgenero);
         }
         else {
             throw new RuntimeException("ID ocupado: " + id);
@@ -51,13 +51,13 @@ public class ClaseController {
 
     // borra por Id
     @CrossOrigin(origins = "http://localhost:3000")
-    @DeleteMapping(path = "/clase/{id}")
-    public void deleteClase(@PathVariable String id){
-        Optional<Clase> clase = claseRepository.findById(id);
-        if(clase.isEmpty()){
+    @DeleteMapping(path = "/genero/{id}")
+    public void deleteGenero(@PathVariable String id){
+        Optional<Genero> genero = generoRepository.findById(id);
+        if(genero.isEmpty()){
             throw  new RuntimeException("not found: " + id);
         }
-        claseRepository.deleteById(id);
+        generoRepository.deleteById(id);
     }
 
 

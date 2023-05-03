@@ -1,7 +1,7 @@
 package com.Proyecto2.Lenguajes.controller.Taxones;
 
-import com.Proyecto2.Lenguajes.models.Taxones.Division;
-import com.Proyecto2.Lenguajes.repository.Taxones.DivisionRepository;
+import com.Proyecto2.Lenguajes.models.Taxones.Clase;
+import com.Proyecto2.Lenguajes.repository.Taxones.ClaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,39 +10,39 @@ import java.util.Optional;
 
 @RestController
 
-public class DivisionController {
+public class ClaseController {
 
     @Autowired
-    private DivisionRepository divisionRepository;
+    private ClaseRepository claseRepository;
 
     // seleccionar todos
     @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping(path = "/division")
-    public List<Division> getDivision() {
-        return divisionRepository.findAll();
+    @GetMapping(path = "/clase")
+    public List<Clase> getClases() {
+        return claseRepository.findAll();
     }
 
     // seleccionar por id
     @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping(path = "/division/{id}")
-    public Division getById(@PathVariable String id) {
-        Optional<Division> division = divisionRepository.findById(id);
+    @GetMapping(path = "/clase/{id}")
+    public Clase getById(@PathVariable String id) {
+        Optional<Clase> clase = claseRepository.findById(id);
 
-        if(division.isEmpty()){
+        if(clase.isEmpty()){
             throw new RuntimeException("not found: " + id);
         }
-        return division.get();
+        return clase.get();
     }
 
     // crear
     @CrossOrigin(origins = "http://localhost:3000")
-    @PostMapping(path = "/division")
-    public void createDivision(@RequestBody Division newdivision){
-        String id = newdivision.getId();
-        Optional<Division> division = divisionRepository.findById(id);
+    @PostMapping(path = "/clase")
+    public void createClase(@RequestBody Clase newclase){
+        String id = newclase.getId();
+        Optional<Clase> clase = claseRepository.findById(id);
 
-        if(division.isEmpty()){
-            divisionRepository.save(newdivision);
+        if(clase.isEmpty()){
+            claseRepository.save(newclase);
         }
         else {
             throw new RuntimeException("ID ocupado: " + id);
@@ -51,13 +51,13 @@ public class DivisionController {
 
     // borra por Id
     @CrossOrigin(origins = "http://localhost:3000")
-    @DeleteMapping(path = "/division/{id}")
-    public void deleteDivision(@PathVariable String id){
-        Optional<Division> division = divisionRepository.findById(id);
-        if(division.isEmpty()){
+    @DeleteMapping(path = "/clase/{id}")
+    public void deleteClase(@PathVariable String id){
+        Optional<Clase> clase = claseRepository.findById(id);
+        if(clase.isEmpty()){
             throw  new RuntimeException("not found: " + id);
         }
-        divisionRepository.deleteById(id);
+        claseRepository.deleteById(id);
     }
 
 

@@ -1,12 +1,3 @@
--- Solo para h2 DEBE DESCOMENTARLO
---
--- insert into Image(id,description,url) values(1,'description','url');
--- insert into Image(id,description,url) values(2,'description2','url2');
-
-
-
-
-
 -- ----------------------------------------------------------
 -- MYSQL LO QUE DEBE CORRER EN LA BASE MYSQL
 -- ----------------------------------------------------------
@@ -15,7 +6,7 @@
 -- create database galery;
 -- use galery;
 --
--- --------------------------------- --------
+-- ------------------------------------------
 -- -- -- TABLES
 -- -- ---------------------------------------
 -- CREATE TABLE Person (
@@ -43,9 +34,56 @@
 --                        author VARCHAR(50) NOT NULL,
 --                        publication_year VARCHAR(100) NOT NULL
 -- );
+-- CREATE TABLE Division (
+--                           id VARCHAR(100) PRIMARY KEY,
+--                           taxon_ancestor_id VARCHAR(100) NOT NULL,
+--                           scientific_name VARCHAR(100) NOT NULL,
+--                           author VARCHAR(50) NOT NULL,
+--                           publication_year VARCHAR(100) NOT NULL,
+--                           FOREIGN KEY (taxon_ancestor_id) REFERENCES Reino(id)
+-- );
+-- CREATE TABLE Clase (
+--                        id VARCHAR(100) PRIMARY KEY,
+--                        taxon_ancestor_id VARCHAR(100) NOT NULL,
+--                        scientific_name VARCHAR(100) NOT NULL,
+--                        author VARCHAR(50) NOT NULL,
+--                        publication_year VARCHAR(100) NOT NULL,
+--                        FOREIGN KEY (taxon_ancestor_id) REFERENCES Division(id)
+-- );
+-- CREATE TABLE Orden (
+--                        id VARCHAR(100) PRIMARY KEY,
+--                        taxon_ancestor_id VARCHAR(100) NOT NULL,
+--                        scientific_name VARCHAR(100) NOT NULL,
+--                        author VARCHAR(50) NOT NULL,
+--                        publication_year VARCHAR(100) NOT NULL,
+--                        FOREIGN KEY (taxon_ancestor_id) REFERENCES Clase(id)
+-- );
+-- CREATE TABLE Familia (
+--                          id VARCHAR(100) PRIMARY KEY,
+--                          taxon_ancestor_id VARCHAR(100) NOT NULL,
+--                          scientific_name VARCHAR(100) NOT NULL,
+--                          author VARCHAR(50) NOT NULL,
+--                          publication_year VARCHAR(100) NOT NULL,
+--                          FOREIGN KEY (taxon_ancestor_id) REFERENCES Orden(id)
+-- );
+-- CREATE TABLE Genero (
+--                         id VARCHAR(100) PRIMARY KEY,
+--                         taxon_ancestor_id VARCHAR(100) NOT NULL,
+--                         scientific_name VARCHAR(100) NOT NULL,
+--                         author VARCHAR(50) NOT NULL,
+--                         publication_year VARCHAR(100) NOT NULL,
+--                         FOREIGN KEY (taxon_ancestor_id) REFERENCES Familia(id)
+-- );
+-- CREATE TABLE Especie (
+--                          id VARCHAR(100) PRIMARY KEY,
+--                          taxon_ancestor_id VARCHAR(100) NOT NULL,
+--                          scientific_name VARCHAR(100) NOT NULL,
+--                          author VARCHAR(50) NOT NULL,
+--                          publication_year VARCHAR(100) NOT NULL,
+--                          FOREIGN KEY (taxon_ancestor_id) REFERENCES Genero(id)
+-- );
 --
 --
--- -- drop table image;
 -- CREATE TABLE image (
 --                        id VARCHAR(100) PRIMARY KEY,
 --                        description VARCHAR(500) NOT NULL,
@@ -60,7 +98,7 @@
 --                        FOREIGN KEY (owner_id) REFERENCES Institution(id)
 -- );
 --
--- --------------------------------- --------
+-- -----------------------------------------
 -- -- -- PROCEDURES
 -- -- ---------------------------------------
 -- delimiter //
@@ -125,3 +163,74 @@
 --    OR
 --         keywords LIKE CONCAT('%', buscar, '%');
 -- END //
+--
+--
+-- --------------------------------- --------
+-- -- -- Inserts
+-- -- ---------------------------------------
+-- INSERT INTO Institution (id, name, country, phone, email, website)
+-- VALUES ('456', 'TEC', 'CR', '+34 123456789', 'TEC@example.com', 'TEC.com');
+--
+-- INSERT INTO Institution (id, name, country, phone, email, website)
+-- VALUES ('457', 'UTN', 'CR', '+34 222222222', 'UTN@example.com', 'UTN.com');
+--
+-- INSERT INTO Person (id, name, country, phone, email, last_name)
+-- VALUES ('123', 'Juan', 'Spain', '+34 123888788', 'juan@example.com', 'Pérez');
+--
+-- INSERT INTO Person (id, name, country, phone, email, last_name)
+-- VALUES ('124', 'Isaac', 'CR', '+34 55555555', 'isaac@example.com', 'Melendez');
+--
+--
+-- INSERT INTO image (id, description, url, keywords, author_id, owner_id, license, taxon_id)
+-- VALUES ('1001', 'Colibri con una flor', 'https://firebasestorage.googleapis.com/v0/b/galery-react.appspot.com/o/1683072326655-colibri.png?alt=media&token=a05152a8-527b-436f-8324-e92f115b4d8e'
+--        , 'colibri, flor, naturaleza', '123', '456', 'CC BY-SA', 'Animalia');
+--
+-- INSERT INTO image (id, description, url, keywords, author_id, owner_id, license, taxon_id)
+-- VALUES ('1002', 'Perezoso en un arbol', 'https://firebasestorage.googleapis.com/v0/b/galery-react.appspot.com/o/1683075707343-perezoso.jpg?alt=media&token=19ab7c29-32b1-4503-8cb4-9c75526fec10'
+--        , 'Perezoso, arbol, naturaleza', '123', '456', 'CC BY-ND', 'Animalia');
+--
+-- INSERT INTO image (id, description, url, keywords, author_id, owner_id, license, taxon_id)
+-- VALUES ('1003', 'arbol de guanacaste', 'https://firebasestorage.googleapis.com/v0/b/galery-react.appspot.com/o/1683078529877-arbol_de_guancaste.jpg?alt=media&token=5e89d1dc-eb31-4573-8258-d7958813fbf1'
+--        , 'arbol, guanacaste', '124', '457', 'CC BY-NC-SA', 'Plantae');
+--
+-- INSERT INTO image (id, description, url, keywords, author_id, owner_id, license, taxon_id)
+-- VALUES ('1004', 'Elefante adulto', 'https://firebasestorage.googleapis.com/v0/b/galery-react.appspot.com/o/1683079023668-elefantes.jpg?alt=media&token=f9029126-366d-4f87-8f62-504c0b993563'
+--        , 'elefante', '124', '456', 'CC BY-NC-SA', 'Animalia');
+--
+-- INSERT INTO image (id, description, url, keywords, author_id, owner_id, license, taxon_id)
+-- VALUES ('1005', 'Iguana verde', 'https://firebasestorage.googleapis.com/v0/b/galery-react.appspot.com/o/1683079208085-iguana.jpg?alt=media&token=a4e94465-a0ac-409d-bb02-29b5c55fc614'
+--        , 'iguana, verde', '124', '456', 'CC BY-NC-SA', 'Animalia');
+--
+-- INSERT INTO image (id, description, url, keywords, author_id, owner_id, license, taxon_id)
+-- VALUES ('1006', 'Tiburon en el agua', 'https://firebasestorage.googleapis.com/v0/b/galery-react.appspot.com/o/1683079332617-tiburon.jpg?alt=media&token=f4501a7d-9908-4a69-bbc6-e50c6907da68'
+--        , 'Tiburon, agua, grande', '123', '456', 'CC BY-NC-SA', 'Animalia');
+--
+-- INSERT INTO image (id, description, url, keywords, author_id, owner_id, license, taxon_id)
+-- VALUES ('1007', 'Girasol', 'https://firebasestorage.googleapis.com/v0/b/galery-react.appspot.com/o/1683079513417-girasol.jpg?alt=media&token=96c126ab-13a3-4f22-be96-13652d158534'
+--        , 'Girasol, amarillo, flor', '123', '456', 'CC BY-ND', 'Plantae');
+--
+--
+--
+-- INSERT INTO Reino (id, taxon_ancestor_id, scientific_name, author, publication_year)
+-- VALUES ('1', '0', 'Animalia', 'Carl Linnaeus', '1758-05-03');
+--
+-- INSERT INTO Reino (id, taxon_ancestor_id, scientific_name, author, publication_year)
+-- VALUES ('2', '0', 'Plantae', 'Carl Linnaeus', '1758-05-03');
+--
+-- INSERT INTO Division (id, taxon_ancestor_id, scientific_name, author, publication_year)
+-- VALUES ('2', '1', 'Chordata', 'Valentine', '1995-05-03');
+--
+-- INSERT INTO Clase (id, taxon_ancestor_id, scientific_name, author, publication_year)
+-- VALUES ('3', '2', 'Mammalia', 'Linnaeus', '1758-05-03');
+--
+-- INSERT INTO Orden (id, taxon_ancestor_id, scientific_name, author, publication_year)
+-- VALUES ('4', '3', 'Carnivora', 'Bowdich', '1821-05-03');
+--
+-- INSERT INTO Familia (id, taxon_ancestor_id, scientific_name, author, publication_year)
+-- VALUES ('5', '4', 'Felidae', 'Fischer de Waldheim', '1817-05-03');
+--
+-- INSERT INTO Genero (id, taxon_ancestor_id, scientific_name, author, publication_year)
+-- VALUES ('6', '5', 'Panthera', 'Oken', '1816-05-03');
+--
+-- INSERT INTO Especie (id, taxon_ancestor_id, scientific_name, author, publication_year)
+-- VALUES ('7', '6', 'Panthera leo', 'Linnaeus', '1758-05-03');

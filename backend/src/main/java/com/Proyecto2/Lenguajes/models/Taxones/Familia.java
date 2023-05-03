@@ -3,14 +3,14 @@ package com.Proyecto2.Lenguajes.models.Taxones;
 import javax.persistence.Entity;
 
 @Entity
-public class Clase extends Taxon{
+public class Familia extends Taxon{
 
     private String scientific_name;
 
-    public Clase() {
+    public Familia() {
     }
 
-    public Clase(String id, String taxon_ancestor_id, String author, String publication_year, String scientific_name) {
+    public Familia(String id, String taxon_ancestor_id, String author, String publication_year, String scientific_name) {
         super(id, taxon_ancestor_id, author, publication_year);
         this.scientific_name = scientific_name;
     }

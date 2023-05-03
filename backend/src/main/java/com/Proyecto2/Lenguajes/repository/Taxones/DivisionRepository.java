@@ -1,7 +1,7 @@
 package com.Proyecto2.Lenguajes.repository.Taxones;
 
-import com.Proyecto2.Lenguajes.models.Taxones.Orden;
+import com.Proyecto2.Lenguajes.models.Taxones.Division;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface OrdenRepository extends JpaRepository<Orden, String> {
+public interface DivisionRepository extends JpaRepository<Division, String> {
 }
