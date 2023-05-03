@@ -180,6 +180,34 @@
 -- INSERT INTO Person (id, name, country, phone, email, last_name)
 -- VALUES ('124', 'Isaac', 'CR', '+34 55555555', 'isaac@example.com', 'Melendez');
 --
+-- -- ------------------------------------------------------------------------------------
+--
+-- INSERT INTO Reino (id, taxon_ancestor_id, scientific_name, author, publication_year)
+-- VALUES ('1', '0', 'Animalia', 'Carl Linnaeus', '1758-05-03');
+--
+-- INSERT INTO Reino (id, taxon_ancestor_id, scientific_name, author, publication_year)
+-- VALUES ('2', '0', 'Plantae', 'Carl Linnaeus', '1758-05-03');
+--
+-- INSERT INTO Division (id, taxon_ancestor_id, scientific_name, author, publication_year)
+-- VALUES ('2', '1', 'Chordata', 'Valentine', '1995-05-03');
+--
+-- INSERT INTO Clase (id, taxon_ancestor_id, scientific_name, author, publication_year)
+-- VALUES ('3', '2', 'Mammalia', 'Linnaeus', '1758-05-03');
+--
+-- INSERT INTO Orden (id, taxon_ancestor_id, scientific_name, author, publication_year)
+-- VALUES ('4', '3', 'Carnivora', 'Bowdich', '1821-05-03');
+--
+-- INSERT INTO Familia (id, taxon_ancestor_id, scientific_name, author, publication_year)
+-- VALUES ('5', '4', 'Felidae', 'Fischer de Waldheim', '1817-05-03');
+--
+-- INSERT INTO Genero (id, taxon_ancestor_id, scientific_name, author, publication_year)
+-- VALUES ('6', '5', 'Panthera', 'Oken', '1816-05-03');
+--
+-- INSERT INTO Especie (id, taxon_ancestor_id, scientific_name, author, publication_year)
+-- VALUES ('7', '6', 'Panthera leo', 'Linnaeus', '1758-05-03');
+--
+--
+-- -- ------------------------------------------------------------------------------------
 --
 -- INSERT INTO image (id, description, url, keywords, author_id, owner_id, license, taxon_id)
 -- VALUES ('1001', 'Colibri con una flor', 'https://firebasestorage.googleapis.com/v0/b/galery-react.appspot.com/o/1683072326655-colibri.png?alt=media&token=a05152a8-527b-436f-8324-e92f115b4d8e'
@@ -209,28 +237,7 @@
 -- VALUES ('1007', 'Girasol', 'https://firebasestorage.googleapis.com/v0/b/galery-react.appspot.com/o/1683079513417-girasol.jpg?alt=media&token=96c126ab-13a3-4f22-be96-13652d158534'
 --        , 'Girasol, amarillo, flor', '123', '456', 'CC BY-ND', 'Plantae');
 --
+-- INSERT INTO image (id, description, url, keywords, author_id, owner_id, license, taxon_id)
+-- VALUES ('1008', 'Delfin en el agua', 'https://firebasestorage.googleapis.com/v0/b/galery-react.appspot.com/o/1683079939838-delfin.jpg?alt=media&token=76974de8-d2f5-4ca6-9bd8-a84581e63912'
+--        , 'delfin, agua', '123', '457', 'CC BY-ND', 'Animalia');
 --
---
--- INSERT INTO Reino (id, taxon_ancestor_id, scientific_name, author, publication_year)
--- VALUES ('1', '0', 'Animalia', 'Carl Linnaeus', '1758-05-03');
---
--- INSERT INTO Reino (id, taxon_ancestor_id, scientific_name, author, publication_year)
--- VALUES ('2', '0', 'Plantae', 'Carl Linnaeus', '1758-05-03');
---
--- INSERT INTO Division (id, taxon_ancestor_id, scientific_name, author, publication_year)
--- VALUES ('2', '1', 'Chordata', 'Valentine', '1995-05-03');
---
--- INSERT INTO Clase (id, taxon_ancestor_id, scientific_name, author, publication_year)
--- VALUES ('3', '2', 'Mammalia', 'Linnaeus', '1758-05-03');
---
--- INSERT INTO Orden (id, taxon_ancestor_id, scientific_name, author, publication_year)
--- VALUES ('4', '3', 'Carnivora', 'Bowdich', '1821-05-03');
---
--- INSERT INTO Familia (id, taxon_ancestor_id, scientific_name, author, publication_year)
--- VALUES ('5', '4', 'Felidae', 'Fischer de Waldheim', '1817-05-03');
---
--- INSERT INTO Genero (id, taxon_ancestor_id, scientific_name, author, publication_year)
--- VALUES ('6', '5', 'Panthera', 'Oken', '1816-05-03');
---
--- INSERT INTO Especie (id, taxon_ancestor_id, scientific_name, author, publication_year)
--- VALUES ('7', '6', 'Panthera leo', 'Linnaeus', '1758-05-03');
